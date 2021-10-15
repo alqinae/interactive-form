@@ -129,10 +129,12 @@ function validateName() {
     if (/^$/.test(name.value) || /^\s+$/.test(name.value)) {
         // If one of the conditions applies, we will show an error message and return false
         document.querySelector('#name-hint').style.display = 'inherit';
+        name.parentNode.className = 'not-valid';
         return false;
     } else {
         // Otherwise, we will hide the error message and return true
         document.querySelector('#name-hint').style.display = 'none';
+        name.parentNode.className = 'valid';
         return true;
     }
 }
@@ -145,10 +147,12 @@ function validateEmail() {
     if (/^[a-zA-z0-9-._]+@[a-zA-z0-9-]+.com$/.test(email.value)) {
         // If the email is formatted well, we will hide the error message and return false
         document.querySelector('#email-hint').style.display = 'none';
+        email.parentNode.className = 'valid';
         return true;
     } else {
         // Otherwise, we will show the error message and return false
         document.querySelector('#email-hint').style.display = 'inherit';
+        email.parentNode.className = 'not-valid';
         return false;
     }
 }
@@ -158,10 +162,13 @@ function validateActivities() {
     if (document.querySelector('input[type="checkbox"]:checked')) {
         // If there is at least one checkbox selected, hide the error message and return true
         document.querySelector('#activities-hint').style.display = 'none';
+        document.querySelector('#activities-hint').parentNode.className = 'activities valid';
         return true;
     } else {
         // Else, show the error message and return false
         document.querySelector('#activities-hint').style.display = 'inherit';
+        document.querySelector('#activities-hint').parentNode.className = 'activities';
+        document.querySelector('#activities-hint').className = 'activities-hint hint not-valid';
         return false;
     }
 }
@@ -175,30 +182,36 @@ function validateCreditCard() {
         if (!/^\d{13,16}$/.test(document.querySelector('#cc-num').value)) {
             // If this pattern is not matched, display an error message and set valid to false
             document.querySelector('#cc-hint').style.display = 'inherit';
+            document.querySelector('#cc-num').parentNode.className = 'not-valid';
             valid = false;
         } else {
             // Otherwise hide the error message
             document.querySelector('#cc-hint').style.display = 'none';
+            document.querySelector('#cc-num').parentNode.className = 'valid';
         }
 
         // We will check if the user entered 5 numbers for the zip code
         if (!/^\d{5}$/.test(document.querySelector('#zip').value)) {
             // If this pattern is not matched, display an error message and set valid to false
             document.querySelector('#zip-hint').style.display = 'inherit';
+            document.querySelector('#zip-hint').parentNode.className = 'not-valid';
             valid = false;
         } else {
             // Otherwise, hide the error message
             document.querySelector('#zip-hint').style.display = 'none';
+            document.querySelector('#zip-hint').parentNode.className = 'valid';
         }
 
         // Checking that the user has entered three digits for the cvv
         if (!/^\d{3}$/.test(document.querySelector('#cvv').value)) {
             // If this pattern is not matched, display an error message and set valid to false
             document.querySelector('#cvv-hint').style.display = 'inherit';
+            document.querySelector('#cvv-hint').parentNode.className = 'not-valid';
             valid = false;
         } else {
             // Otherwise, hide the error message
             document.querySelector('#cvv-hint').style.display = 'none';
+            document.querySelector('#cvv-hint').parentNode.className = 'not-valid';
         }
     }
     // Return "valid" which will be true if all of the tests passed. Or, false if one or more is/are not passed
