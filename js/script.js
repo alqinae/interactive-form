@@ -25,6 +25,8 @@ theme.addEventListener('change', () => {
     const themeSelection = theme.value;
     // The color drop menu will be enabled
     color.disabled = false;
+    // Changing the selected index to the default value
+    color.selectedIndex = 0;
     const options = color.getElementsByTagName('option');
     // Loop through the colors
     for (let i = 0; i < options.length; i++) {
@@ -94,11 +96,13 @@ for (let i = 0; i < activitiesCheckBoxes.length; i++) {
     });
 }
 
-// Hiding the payment details, we will show them when the user choose a payment method
-document.querySelector('#credit-card').style.display = 'none';
+// Selecting credit card as a default payment method and show credit card details input fields
+document.querySelector('#credit-card').style.display = 'inherit';
 document.querySelector('#paypal').style.display = 'none';
 document.querySelector('#bitcoin').style.display = 'none';
 const payment = document.querySelector('#payment');
+// Select the credit card as a default selection
+payment.selectedIndex = 1;
 payment.addEventListener('change', () => {
     switch (payment.value) {
         case 'credit-card':
@@ -167,8 +171,8 @@ function validateActivities() {
     } else {
         // Else, show the error message and return false
         document.querySelector('#activities-hint').style.display = 'inherit';
-        document.querySelector('#activities-hint').parentNode.className = 'activities';
-        document.querySelector('#activities-hint').className = 'activities-hint hint not-valid';
+        document.querySelector('#activities-hint').parentNode.className = 'activities not-valid';
+        document.querySelector('#activities-hint').className = 'activities-hint hint';
         return false;
     }
 }
