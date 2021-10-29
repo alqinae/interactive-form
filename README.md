@@ -12,5 +12,7 @@
 Name and email fields are having real time validation.
 
 4- To submit the form successfully, the name should be filled (not blank spaces or empty). Also, the email should be formatted correctly.
+The email hint is specific to the error, e.g. if you left the field blank or filled with empty spaces, you will get a different hint
+than if you filled it with a misformatted input. The input should be name@example.com where "name" and "example" are variable and the rest are constant.
 You have to choose at least one activity as well. All the chosen activities should not have time conflicts. Finally, if you chose the credit card option, then you have to fill the card number, cvv and zipcode.
 If you didn't fill the fields mentioned previously, the form will not be submitted, i.e. the default behaviour will be prevented. Otherwise, it will be submitted and the fields will be reset.

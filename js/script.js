@@ -153,9 +153,15 @@ function validateEmail() {
         document.querySelector('#email-hint').style.display = 'none';
         email.parentNode.className = 'valid';
         return true;
+    } else if (/^$/.test(email.value) || /^\s+$/.test(email.value)) {
+        document.querySelector('#email-hint').style.display = 'inherit';
+        document.querySelector('#email-hint').innerText = 'You can not leave this field empty or consists of only whitespaces';
+        email.parentNode.className = 'not-valid';
+        return false;
     } else {
         // Otherwise, we will show the error message and return false
         document.querySelector('#email-hint').style.display = 'inherit';
+        document.querySelector('#email-hint').innerText = 'You have to format the email correctly, i.e. name@example.com';
         email.parentNode.className = 'not-valid';
         return false;
     }
